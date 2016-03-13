@@ -23,7 +23,7 @@ printf "file '.%s'\n" ./${dia_pasta}/ch2_* > ./${dia_pasta}/ch2.txt & wait
 
 ffmpeg -f concat -i ./${dia_pasta}/ch2.txt -c copy ./${dia_pasta}/channel2.mp4 & wait
 
-ffmpeg -i  ./${dia_pasta}/channel2.mp4 -i  ./${dia_pasta}/channel2.mp4 -filter_complex "[0:v:0]pad=iw*2:ih[bg]; [bg][1:v:0]overlay=w" ./${dia_pasta}/$dia.mp4
+ffmpeg -i  ./${dia_pasta}/channel1.mp4 -i  ./${dia_pasta}/channel2.mp4 -filter_complex "[0:v:0]pad=iw*2:ih[bg]; [bg][1:v:0]overlay=w" ./${dia_pasta}/$dia.mp4
 
 python ./upload/upload_video.py --file=./${dia_pasta}/$dia.mp4 --title="$equipe $dia" --description="Jogo no Paradiso Futebol Society" --keywords="futebol, futebol society" --category=17 --privacyStatus="unlisted" 
 
